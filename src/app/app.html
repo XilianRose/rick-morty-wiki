@@ -1,22 +1,51 @@
-<h1>Welcome to my {{title}}!</h1>
-<h3>Wubba Lubba Dub Dub!</h3>
+<div class="container">
+  <header>
+    <h1 class="title">RICK AND MORTY WIKI</h1>
+    <p class="subtitle">wubba lubba dub dub!</p>
+  </header>
 
-<div class="nav">
-  <a routerLink="/home">Home</a> | <a routerLink="/characters">Characters</a> | <a routerLink="/episodes">Episodes</a> | <a routerLink="/locations">Locations</a> | <a routerLink="/species">Species</a> |
-</div>
+  <nav class="nav">
+    <a routerLink="/home" routerLinkActive="active">home</a>
+    <a routerLink="/characters" routerLinkActive="active">characters</a>
+    <a routerLink="/episodes" routerLinkActive="active">episodes</a>
+    <a routerLink="/locations" routerLinkActive="active">locations</a>
+    <a routerLink="/species" routerLinkActive="active">species</a>
+  </nav>
 
-<router-outlet></router-outlet>
+  <main>
+    <router-outlet></router-outlet>
 
-<div class="search-bar">
-  <input type="text" [formControl]="searchBar" placeholder="Search..."  />
-  <button (click)="onSearch()">Search</button>
-</div>
+    <div class="search-section">
+      <div class="search-bar">
+        <input type="text" [formControl]="searchBar" placeholder="Search characters..." />
+        <button (click)="onSearch()">Search</button>
+      </div>
+      <h3 class="results-count">{{ (results$ | async)?.length }} characters found</h3>
+    </div>
 
-<h3>{{ (results$ | async)?.length }} characters found</h3>
+    <div class="character-grid">
+      @for (character of results$ | async; track character.id) {
+        <app-character-card [character]="character"></app-character-card>
+      }
 
-<div> 
-  @for (character of results$ | async; track character){
-    <app-character-card [character]="character"></app-character-card>
-  }
+      <div class="info-panel">
+        <div class="panel-header">
+          <p>SYSTEM_INFO.EXE</p>
+          <div class="window-controls">
+            <div class="control"></div>
+            <div class="control"></div>
+            <div class="control close"></div>
+          </div>
+        </div>
+        <div class="panel-content">
+          <p class="line">&gt; THANKS FOR CHECKING OUT THE WIKI!<span class="cursor">_</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-text">This is a fan-made project. Rick and Morty is a trademark of Adult Swim.</p>
+  </footer>
 </div>
 

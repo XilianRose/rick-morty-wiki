@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #A0F030;
+    --background-light: #F0F8FF;
+    --background-dark: #1A202C;
+    --card-light: #FFFFFF;
+    --card-dark: #2D3748;
+    --text-light: #2D3748;
+    --text-dark: #E2E8F0;
+    --border-light: #CBD5E0;
+    --border-dark: #4A5568;
+}
+
+body {
+    font-family: monospace;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.pixelated {
+    image-rendering: pixelated;
+}

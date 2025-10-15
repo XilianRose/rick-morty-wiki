@@ -1,27 +1,301 @@
 :host {
-    height: 100%;
-    font-family: monospace;
-    color: #13294B;
-    background-color: #C5B4E3;
-    background-image: linear-gradient(
+    display: block;
+    min-height: 100vh;
+    background: linear-gradient(
         180deg, 
         #9873AC 0%, 
         #C5B4E3 46%,
         #F5DADF 100%
     );
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-.pixelated {
-    image-rendering: pixelated;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+        padding: 2rem;
+    }
 }
 
+// Header
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+
+    .title {
+        font-size: 3rem;
+        font-weight: normal;
+        color: var(--primary);
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
+
+        @media (min-width: 768px) {
+            font-size: 4.5rem;
+        }
+    }
+
+    .subtitle {
+        font-size: 1.125rem;
+        color: var(--text-light);
+        margin-top: 0.5rem;
+    }
+}
+
+// Navigation
 .nav {
-    margin: 20px;
-    padding: 32px;
-    font-size: large;
-    font-weight: bold;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 1rem;
+
+    a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border: 2px solid transparent;
+        transition: all 0.2s;
+
+        &:hover {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        &.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+    }
+}
+
+// Search Section
+.search-section {
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+
+    input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 2px solid #000;
+        border-radius: 0.5rem;
+        background-color: var(--card-light);
+        color: var(--text-light);
+        font-family: 'VT323', monospace;
+        font-size: 1.25rem;
+        box-shadow: 4px 4px 0px #000;
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    button {
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #000;
+        border-radius: 0.5rem;
+        background-color: var(--primary);
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 4px 4px 0px #000;
+        transition: all 0.2s;
+        font-family: 'VT323', monospace;
+        font-size: 1.25rem;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.results-count {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+// Character Grid
+.character-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// Info Panel
+.info-panel {
+    background-color: var(--card-light);
+    border: 2px solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 4px 4px 0px #000;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    grid-column: 1 / -1;
+
+    .panel-header {
+        background-color: #d1d5db;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-bottom: 2px solid #000;
+
+        p {
+            font-size: 1.125rem;
+            margin: 0;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 0.25rem;
+
+            .control {
+                width: 1rem;
+                height: 1rem;
+                border: 2px solid #000;
+                background-color: transparent;
+
+                &.close {
+                    background-color: #ef4444;
+                }
+            }
+        }
+    }
+
+    .panel-content {
+        padding: 1.5rem;
+
+        @media (min-width: 768px) {
+            padding: 2rem;
+        }
+
+        .line {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+
+            @media (min-width: 768px) {
+                font-size: 1.875rem;
+            }
+
+            a {
+                color: var(--primary);
+                text-decoration: underline;
+            }
+
+            .cursor {
+                animation: blink 1s infinite;
+            }
+        }
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+// Footer
+footer {
+    margin-top: 3rem;
+    text-align: center;
+
+    .download-btn {
+        background-color: var(--primary);
+        color: #000;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0.75rem 2rem;
+        border: 2px solid #000;
+        border-radius: 0.5rem;
+        box-shadow: 4px 4px 0px #000;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.2s;
+        font-family: 'VT323', monospace;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        .material-icons {
+            font-size: 1.875rem;
+        }
+    }
+
+    .footer-text {
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+        color: var(--text-light);
+    }
+}
+
+// Dark mode support
+:host-context(body.dark) {
+    header .subtitle,
+    .results-count,
+    .nav a,
+    footer .footer-text {
+        color: var(--text-dark);
+    }
+
+    .search-bar {
+        input {
+            background-color: var(--card-dark);
+            color: var(--text-dark);
+            border-color: var(--primary);
+            box-shadow: 4px 4px 0px var(--primary);
+        }
+
+        button {
+            border-color: var(--primary);
+            box-shadow: 4px 4px 0px var(--primary);
+        }
+    }
+
+    .info-panel {
+        background-color: var(--card-dark);
+        border-color: var(--primary);
+        box-shadow: 4px 4px 0px var(--primary);
+
+        .panel-header {
+            background-color: #4b5563;
+            border-bottom-color: var(--primary);
+        }
+    }
+
+    .download-btn {
+        border-color: var(--primary);
+        box-shadow: 4px 4px 0px var(--primary);
+    }
 }
