@@ -1,0 +1,27 @@
+:host {
+    height: 100%;
+    font-family: monospace;
+    color: #13294B;
+    background-color: #C5B4E3;
+    background-image: linear-gradient(
+        180deg, 
+        #9873AC 0%, 
+        #C5B4E3 46%,
+        #F5DADF 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pixelated {
+    image-rendering: pixelated;
+}
+
+.nav {
+    margin: 20px;
+    padding: 32px;
+    font-size: large;
+    font-weight: bold;
+}

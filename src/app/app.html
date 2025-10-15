@@ -1,0 +1,22 @@
+<h1>Welcome to my {{title}}!</h1>
+<h3>Wubba Lubba Dub Dub!</h3>
+
+<div class="nav">
+  <a routerLink="/home">Home</a> | <a routerLink="/characters">Characters</a> | <a routerLink="/episodes">Episodes</a> | <a routerLink="/locations">Locations</a> | <a routerLink="/species">Species</a> |
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="search-bar">
+  <input type="text" [formControl]="searchBar" placeholder="Search..."  />
+  <button (click)="onSearch()">Search</button>
+</div>
+
+<h3>{{ (results$ | async)?.length }} characters found</h3>
+
+<div> 
+  @for (character of results$ | async; track character){
+    <app-character-card [character]="character"></app-character-card>
+  }
+</div>
+
