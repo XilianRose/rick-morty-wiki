@@ -8,8 +8,18 @@
 
 :root {
     --primary: #A0F030;
-    --background-light: #F0F8FF;
-    --background-dark: #1A202C;
+    --background-light: linear-gradient(
+        180deg, 
+        #9873AC 0%, 
+        #C5B4E3 46%,
+        #F5DADF 100%
+    );
+    --background-dark: linear-gradient(
+        180deg, 
+        #1A202C 0%, 
+        #2D3748 46%,
+        #4A5568 100%
+    );
     --card-light: #FFFFFF;
     --card-dark: #2D3748;
     --text-light: #2D3748;
@@ -20,13 +30,17 @@
 
 body {
     font-family: monospace;
-    background-color: var(--background-light);
+    background: var(--background-light);
+    background-attachment: fixed;
+    background-size: 100% 100vh;
     color: var(--text-light);
     transition: background-color 0.3s, color 0.3s;
 }
 
 body.dark {
-    background-color: var(--background-dark);
+    background: var(--background-dark);
+    background-attachment: fixed;
+    background-size: 100% 100vh;
     color: var(--text-dark);
 }
 
