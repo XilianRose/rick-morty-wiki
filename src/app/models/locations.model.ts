@@ -8,14 +8,12 @@ export interface Location {
   created: string;
 }
 
-export interface LocationInfo {
-  count: number;
-  pages: number;
-  next: string | null;
-  prev: string | null;
-}
-
 export interface LocationResponse {
-  info: LocationInfo;
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
   results: Location[];
 } 
