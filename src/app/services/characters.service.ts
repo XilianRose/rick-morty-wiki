@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CharacterResponse, Character } from '../models/characters.model';
 
@@ -30,10 +30,12 @@ export class CharactersService {
     type?: string;
     gender?: string;
   }): Observable<CharacterResponse> {
-    const params = new URLSearchParams();
+    let params = new HttpParams();
     Object.entries(filters).forEach(([key, value]) => {
-      if (value) params.append(key, value);
+      if (value) {
+        params = params.append(key, value);
+      }
     });
-    return this.http.get<CharacterResponse>(`${this.apiUrl}?${params.toString()}`);
+    return this.http.get<CharacterResponse>(this.apiUrl, { params });
   }
 }
