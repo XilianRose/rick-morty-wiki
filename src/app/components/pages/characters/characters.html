@@ -1,1 +1,36 @@
-<p>characters works!</p>
+<div class="characters-page">
+  <div class="page-header">
+    <h2>Characters</h2>
+    <p class="total-count">Total: {{ totalCharacters() }} characters</p>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Loading characters...</div>
+  }
+
+  <div class="characters-grid">
+    @for (character of characters(); track character.id) {
+      <app-character-card [character]="character"></app-character-card>
+    }
+  </div>
+
+  <div class="pagination">
+    <button 
+      class="pagination-btn" 
+      (click)="previousPage()" 
+      [disabled]="currentPage() === 1">
+      Previous
+    </button>
+    
+    <div class="page-info">
+      <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
+    </div>
+    
+    <button 
+      class="pagination-btn" 
+      (click)="nextPage()" 
+      [disabled]="currentPage() === totalPages()">
+      Next
+    </button>
+  </div>
+</div>
