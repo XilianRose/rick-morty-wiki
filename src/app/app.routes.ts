@@ -28,8 +28,4 @@ export const routes: Routes = [
         path: 'locations',
         component: Locations
     },
-    {
-        path: 'species',
-        component: Species
-    }
 ];
