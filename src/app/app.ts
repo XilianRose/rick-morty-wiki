@@ -5,8 +5,6 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { combineLatest, map, Observable, shareReplay } from 'rxjs';
 
-import { CharacterCard } from './components/character-card/character-card';
-
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, ReactiveFormsModule, CommonModule, RouterModule],

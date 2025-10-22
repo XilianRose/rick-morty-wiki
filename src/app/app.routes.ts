@@ -4,7 +4,6 @@ import { Home } from './components/pages/home/home';
 import { Characters } from './components/pages/characters/characters';
 import { Episodes } from './components/pages/episodes/episodes';
 import { Locations } from './components/pages/locations/locations';
-import { Species } from './components/pages/species/species';
 
 export const routes: Routes = [
     {
