@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ApiResponse, Character } from '../models/characters.model';
+import { CharacterResponse, Character } from '../models/characters.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class CharactersService {
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(page: number = 1): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.apiUrl}?page=${page}`);
+  getCharacters(page: number = 1): Observable<CharacterResponse> {
+    return this.http.get<CharacterResponse>(`${this.apiUrl}?page=${page}`);
   }
 
   getCharacterById(id: number): Observable<Character> {
@@ -29,11 +29,11 @@ export class CharactersService {
     species?: string;
     type?: string;
     gender?: string;
-  }): Observable<ApiResponse> {
+  }): Observable<CharacterResponse> {
     const params = new URLSearchParams();
     Object.entries(filters).forEach(([key, value]) => {
       if (value) params.append(key, value);
     });
-    return this.http.get<ApiResponse>(`${this.apiUrl}?${params.toString()}`);
+    return this.http.get<CharacterResponse>(`${this.apiUrl}?${params.toString()}`);
   }
 }

@@ -1,4 +1,7 @@
-import { location } from './location.model';
+export interface CharacterLocation {
+  name: string;
+  url: string;
+} 
 
 export interface Character {
   created: string;
@@ -6,23 +9,23 @@ export interface Character {
   gender: string;
   id: number;
   image: string;
-  location: location;
+  location: CharacterLocation;
   name: string;
-  origin: location;
+  origin: CharacterLocation;
   species: string;
   status: string;
   type: string;
   url: string;
 }
 
-export interface Info {
+export interface CharacterInfo {
   count: number;
   pages: number;
   next: string | null;
   prev: string | null;
 }
 
-export interface ApiResponse {
-  info: Info;
+export interface CharacterResponse {
+  info: CharacterInfo;
   results: Character[];
 }
