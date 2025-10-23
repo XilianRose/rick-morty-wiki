@@ -4,6 +4,7 @@ import { Home } from './components/pages/home/home';
 import { Characters } from './components/pages/characters/characters';
 import { Episodes } from './components/pages/episodes/episodes';
 import { Locations } from './components/pages/locations/locations';
+import { CharacterDetails } from './components/pages/character-details/character-details';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,10 @@ export const routes: Routes = [
     {
         path: 'characters',
         component: Characters
+    },
+    {
+        path: 'characters/:id',
+        component: CharacterDetails
     },
     {
         path: 'episodes',

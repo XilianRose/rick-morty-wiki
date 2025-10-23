@@ -10,7 +10,7 @@
 
   <div class="characters-grid">
     @for (character of characters(); track character.id) {
-      <app-character-card [character]="character"></app-character-card>
+      <app-character-card [character]="character" (click)="viewCharacterDetails(character.id)"></app-character-card>
     }
   </div>
 
