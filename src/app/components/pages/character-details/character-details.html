@@ -1,20 +1,59 @@
-<div class="character-details">
-  <div class="details-header">
-    <h2>{{ character.name }}</h2>
-    <div class="status-species">
-      <span class="status" [class]="character.status.toLowerCase()">{{ character.status }}</span>
-      <span class="species">{{ character.species }}</span>
+<div class="character-details-page">
+  <div class="details-card">
+    <div class="details-grid">
+
+      <div class="image-section">
+        <img [src]="character.image" [alt]="character.name" class="character-image pixelated"/>
+      </div>
+
+      <div class="info-section">
+        <h2 class="character-title">{{ character.name }}</h2>
+    
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="label">Species:</span>
+            {{ character.species }}
+          </div>
+
+          <div class="info-item">
+            <span class="label">Status:</span>
+            {{ character.status }}
+          </div>
+
+          <div class="info-item">
+            <span class="label">Gender:</span>
+            {{ character.gender }}
+          </div>
+
+          <div class="info-item">
+            <span class="label">Origin:</span>
+            {{ character.origin.name }}
+          </div>
+
+          <div class="info-item">
+            <span class="label">Location:</span>
+            {{ character.location.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="episodes-section">
+      <h3 class="episodes-title">EPISODES APPEARED IN:</h3>
+      <div class="episodes-list">
+        <ul>
+          @for (episode of character.episode; track episode) {
+            // Change to getEpisode when method is available
+            <li>&gt; Episode {{ character.episode }}</li>
+          }
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="details-content">
-    <div class="image-section">
-      <img [src]="character.image" [alt]="character.name"/>
-    </div>
-    <div class="info-section">
-      <p><strong>Gender:</strong> {{ character.gender }}</p>
-      <p><strong>Origin:</strong> {{ character.origin.name }}</p>
-      <p><strong>Location:</strong> {{ character.location.name }}</p>
-      <p><strong>Episodes Featured In:</strong> {{ character.episode.length }}</p>
-    </div>
+
+  <div class="back-button-container">
+    <button class="back-button" routerLink="/characters">
+      &lt; BACK TO CHARACTERS
+    </button>
   </div>
 </div>
