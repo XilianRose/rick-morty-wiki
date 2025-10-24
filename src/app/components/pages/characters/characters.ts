@@ -3,18 +3,17 @@ import { CharactersService } from '../../../services/characters.service';
 import { Character } from '../../../models/characters.model';
 import { CharacterCard } from '../../character-card/character-card';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-characters',
-  imports: [CharacterCard, CommonModule],
+  imports: [CharacterCard, CommonModule, RouterModule],
   templateUrl: './characters.html',
   styleUrl: './characters.scss'
 })
 
 export class Characters implements OnInit {
   private charactersService = inject(CharactersService);
-  private router = inject(Router);
 
   totalPages = signal<number>(0);
   currentPage = signal<number>(1);
@@ -41,10 +40,6 @@ export class Characters implements OnInit {
         this.loading.set(false);
       }
     });
-  }
-  
-  viewCharacterDetails(id: number) {
-    this.router.navigate(['/characters', id]);
   }
 
   nextPage() {
