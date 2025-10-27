@@ -1,1 +1,62 @@
-<p>episodes works!</p>
+<div class="episodes-page">
+  <div class="page-header">
+    <h2>Episodes</h2>
+    <p class="total-count">Total: {{ allEpisodes().length }} episodes across {{ seasons().length }} seasons</p>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Loading episodes...</div>
+  }
+
+  <div class="seasons-container">
+    @for (seasonGroup of visibleSeasons(); track seasonGroup.season) {
+      <div class="season-section">
+        <div class="season-header">
+          <h3>&gt; Season {{ seasonGroup.season }}</h3>
+        </div>
+
+        <div class="episodes-grid">
+          @for (episode of getVisibleEpisodes(seasonGroup); track episode.id) {
+            <div class="episode-card">
+              <div class="card-content">
+                <div class="episode-number">{{ episode.episode }}</div>
+                <h4 class="episode-name">{{ episode.name }}</h4>
+                <p class="episode-description">{{ episode.air_date }} • {{ episode.characters.length }} characters</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        @if (seasonGroup.episodes.length > 4 && !seasonGroup.expanded) {
+          <div class="expand-container">
+            <button class="expand-btn" (click)="toggleSeason(seasonGroup.season)">
+                <span class="material-icons">Show All {{ seasonGroup.episodes.length }} Episodes</span>
+            </button>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (totalSeasonPages() > 1) {
+    <div class="pagination">
+      <button 
+        class="pagination-btn" 
+        (click)="previousSeasonPage()" 
+        [disabled]="currentSeasonPage() === 1">
+        Previous Season
+      </button>
+      
+      <div class="page-info">
+        <span>Season {{ visibleSeasons()[0]?.season }} of {{ seasons().length }}</span>
+      </div>
+      
+      <button 
+        class="pagination-btn" 
+        (click)="nextSeasonPage()" 
+        [disabled]="currentSeasonPage() === totalSeasonPages()">
+        Next Season
+      </button>
+    </div>
+  }
+</div>
