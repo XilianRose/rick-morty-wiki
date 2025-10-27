@@ -17,13 +17,7 @@
 
         <div class="episodes-grid">
           @for (episode of getVisibleEpisodes(seasonGroup); track episode.id) {
-            <div class="episode-card">
-              <div class="card-content">
-                <div class="episode-number">{{ episode.episode }}</div>
-                <h4 class="episode-name">{{ episode.name }}</h4>
-                <p class="episode-description">{{ episode.air_date }} • {{ episode.characters.length }} characters</p>
-              </div>
-            </div>
+            <app-episode-card [episode]="episode"></app-episode-card>
           }
         </div>
 

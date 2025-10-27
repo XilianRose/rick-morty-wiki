@@ -58,50 +58,6 @@
     margin-bottom: 1.5rem;
   }
 
-  .episode-card {
-    background-color: var(--card-light);
-    border: 3px solid #000;
-    border-radius: 0.75rem;
-    padding: 0;
-    transition: all 0.2s;
-    cursor: pointer;
-    box-shadow: 6px 6px 0px #000;
-    overflow: hidden;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 8px 8px 0px #000;
-    }
-
-    .card-content {
-      padding: 1.5rem;
-    }
-
-    .episode-number {
-      font-size: 1rem;
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.05em;
-    }
-
-    .episode-name {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 0.75rem;
-      color: #000;
-      overflow-wrap: break-word;
-      line-height: 1.3;
-    }
-
-    .episode-description {
-      font-size: 0.95rem;
-      color: #666;
-      line-height: 1.6;
-      margin: 0;
-    }
-  }
-
   .pagination {
     display: flex;
     justify-content: center;
@@ -189,24 +145,6 @@
     .season-section {
       .season-header {
         border-bottom-color: var(--primary);
-      }
-    }
-
-    .episode-card {
-      background-color: var(--card-dark);
-      border-color: var(--primary);
-      box-shadow: 6px 6px 0px var(--primary);
-
-      &:hover {
-        box-shadow: 8px 8px 0px var(--primary);
-      }
-
-      .episode-name {
-        color: var(--text-dark);
-      }
-
-      .episode-description {
-        color: #999;
       }
     }
 

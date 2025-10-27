@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EpisodesService } from '../../../services/episodes.service';
 import { Episode } from '../../../models/episodes.model';
+import { EpisodeCard } from '../../episode-card/episode-card';
 
 interface SeasonGroup {
   season: number;
@@ -11,7 +12,7 @@ interface SeasonGroup {
 
 @Component({
   selector: 'app-episodes',
-  imports: [CommonModule],
+  imports: [CommonModule, EpisodeCard],
   templateUrl: './episodes.html',
   styleUrl: './episodes.scss'
 })
