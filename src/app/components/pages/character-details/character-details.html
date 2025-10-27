@@ -42,9 +42,8 @@
       <h3 class="episodes-title">EPISODES APPEARED IN:</h3>
       <div class="episodes-list">
         <ul>
-          @for (episode of character.episode; track episode) {
-            // Change to getEpisode when method is available
-            <li>&gt; Episode {{ character.episode }}</li>
+          @for (episodeNumber of episodeNumbers; track episodeNumber) {
+            <li>&gt; Episode {{ episodeNumber }}</li>
           }
         </ul>
       </div>

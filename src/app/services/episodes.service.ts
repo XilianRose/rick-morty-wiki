@@ -19,6 +19,10 @@ export class EpisodesService {
     return this.http.get<Episode>(`${this.apiUrl}/${id}`);
   }
 
+  getEpisodeByUrl(url: string): Observable<Episode> {
+    return this.http.get<Episode>(url);
+  }
+  
   filterEpisodes(filters: {
     name?: string;
     episode?: string;
