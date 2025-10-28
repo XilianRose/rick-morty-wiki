@@ -14,9 +14,9 @@ import { forkJoin } from 'rxjs';
 })
 export class CharacterDetails {
   private charactersService = inject(CharactersService);
-  private route = inject(ActivatedRoute);
   private episodesService = inject(EpisodesService);
-  
+  private route = inject(ActivatedRoute);
+
   character!: Character;
   episodeNumbers: string[] = [];
 
