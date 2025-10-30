@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EpisodesService } from '../../../services/episodes.service';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CharactersService } from '../../../services/characters.service';
 import { Episode } from '../../../models/episodes.model';
 import { forkJoin } from 'rxjs';
@@ -25,6 +25,7 @@ export class EpisodeDetails {
     if (id) {
       this.episodeService.getEpisodeById(id).subscribe(episode => {
         this.episode = episode;
+        this.loadCharacters();
       });
     }
   }

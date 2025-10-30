@@ -17,8 +17,8 @@
                 <h3 class="characters-title">CHARACTERS IN THIS EPISODE:</h3>
                 <div class="characters-list">
                     <ul>
-                        @for (character of characters; track character.id) {
-                            <li>&gt; {{ character.name }}</li>
+                        @for (characterName of characterNames; track characterName) {
+                            <li>&gt; {{ characterName }}</li>
                         }
                     </ul>
                 </div>
