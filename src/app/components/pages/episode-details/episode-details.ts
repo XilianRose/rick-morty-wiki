@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EpisodesService } from '../../../services/episodes.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Character } from '../../../models/characters.model';
 import { CharactersService } from '../../../services/characters.service';
 import { Episode } from '../../../models/episodes.model';
 import { forkJoin } from 'rxjs';
@@ -18,7 +19,7 @@ export class EpisodeDetails {
   private route = inject(ActivatedRoute);
 
   episode!: Episode
-  characterNames: string[] = [];
+  characters: Character[] = [];
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
@@ -36,8 +37,8 @@ export class EpisodeDetails {
       );
   
       forkJoin(episodeRequests).subscribe(characters => {
-        this.characterNames = characters.map(char => char.name);
-        console.log('Characters loaded:', this.characterNames);
+        this.characters = characters;
+        console.log('Characters loaded:', this.characters);
       });
     }
 }

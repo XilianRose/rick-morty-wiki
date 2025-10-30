@@ -17,8 +17,12 @@
                 <h3 class="characters-title">CHARACTERS IN THIS EPISODE:</h3>
                 <div class="characters-list">
                     <ul>
-                        @for (characterName of characterNames; track characterName) {
-                            <li>&gt; {{ characterName }}</li>
+                        @for (character of characters; track character.id) {
+                            <li>
+                                <a [routerLink]="['/characters', character.id]" class="character-link">
+                                &gt; {{ character.name }}
+                                </a>
+                            </li>
                         }
                     </ul>
                 </div>
