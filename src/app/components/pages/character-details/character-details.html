@@ -44,7 +44,7 @@
         <ul>
           @for (episode of episodes; track episode.id) {
             <li>
-              <a routerLink="/episodes/{{ episode.id }}"> &gt; Episode {{ episode.episode }}
+              <a routerLink="/episodes/{{ episode.id }}" class="episode-link"> &gt; Episode {{ episode.episode }}
               </a>
             </li>
           }
