@@ -42,8 +42,11 @@
       <h3 class="episodes-title">EPISODES APPEARED IN:</h3>
       <div class="episodes-list">
         <ul>
-          @for (episodeNumber of episodeNumbers; track episodeNumber) {
-            <li>&gt; Episode {{ episodeNumber }}</li>
+          @for (episode of episodes; track episode.id) {
+            <li>
+              <a routerLink="/episodes/{{ episode.id }}"> &gt; Episode {{ episode.episode }}
+              </a>
+            </li>
           }
         </ul>
       </div>
