@@ -19,6 +19,10 @@ export class CharactersService {
     return this.http.get<Character>(`${this.apiUrl}/${id}`);
   }
 
+  getCharacterByUrl(url: string): Observable<Character> {
+    return this.http.get<Character>(url);
+  }
+
   getMultipleCharacters(ids: number[]): Observable<Character[]> {
     return this.http.get<Character[]>(`${this.apiUrl}/${ids.join(',')}`);
   }
