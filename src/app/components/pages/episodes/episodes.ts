@@ -4,6 +4,7 @@ import { EpisodesService } from '../../../services/episodes.service';
 import { Episode } from '../../../models/episodes.model';
 import { EpisodeCard } from '../../episode-card/episode-card';
 import { RouterLink } from "@angular/router";
+import { switchMap, forkJoin, map, catchError, of } from 'rxjs';
 
 interface SeasonGroup {
   season: number;
@@ -75,36 +76,26 @@ export class Episodes implements OnInit {
 
   loadAllEpisodes() {
     this.loading.set(true);
-    // Load all episodes from all pages
-    this.episodesService.getEpisodes(1).subscribe({
-      next: (response) => {
-        const totalPages = response.info.pages;
+    this.episodesService.getEpisodes().pipe(
+      switchMap( firstPage => {
+        const totalPages = firstPage.info.pages;
         const allRequests: ReturnType<typeof this.episodesService.getEpisodes>[] = [];
         
         // Create requests for all pages
         for (let page = 1; page <= totalPages; page++) {
           allRequests.push(this.episodesService.getEpisodes(page));
         }
-
-        // Load all pages
-        import('rxjs').then(({ forkJoin }) => {
-          forkJoin(allRequests).subscribe({
-            next: (responses) => {
-              const allEps = responses.flatMap(r => r.results);
-              this.allEpisodes.set(allEps);
-              this.loading.set(false);
-            },
-            error: (error) => {
-              console.error('Error loading episodes:', error);
-              this.loading.set(false);
-            }
-          });
-        });
-      },
-      error: (error) => {
+        return forkJoin(allRequests);
+      }), 
+      map( responses => responses.flatMap(r => r.results)),
+      catchError( error => {
         console.error('Error loading episodes:', error);
         this.loading.set(false);
-      }
+        return of([] as Episode[]);
+      })
+    ).subscribe( allEps => {
+      this.allEpisodes.set(allEps)
+      this.loading.set(false);
     });
   }
 
