@@ -17,7 +17,7 @@
 
         <div class="episodes-grid">
           @for (episode of getVisibleEpisodes(seasonGroup); track episode.id) {
-            <app-episode-card [episode]="episode"></app-episode-card>
+            <app-episode-card [episode]="episode" [routerLink]="['/episodes', episode.id]"></app-episode-card>
           }
         </div>
 

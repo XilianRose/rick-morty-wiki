@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EpisodesService } from '../../../services/episodes.service';
 import { Episode } from '../../../models/episodes.model';
 import { EpisodeCard } from '../../episode-card/episode-card';
+import { RouterLink } from "@angular/router";
 
 interface SeasonGroup {
   season: number;
@@ -12,7 +13,7 @@ interface SeasonGroup {
 
 @Component({
   selector: 'app-episodes',
-  imports: [CommonModule, EpisodeCard],
+  imports: [CommonModule, EpisodeCard, RouterLink],
   templateUrl: './episodes.html',
   styleUrl: './episodes.scss'
 })
