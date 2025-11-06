@@ -1,33 +1,35 @@
 <div class="episode-details-page">
     <div class="details-card">
-        <div class="info-section">
-            <h2 class="episode-title">{{ episode.name }}</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="label">Episode:</span>
-                    {{ episode.episode }}
-                </div>
+        @if (episode) {
+            <div class="info-section">
+                <h2 class="episode-title">{{ episode.name }}</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Episode:</span>
+                        {{ episode.episode }}
+                    </div>
 
-                <div class="info-item">
-                    <span class="label">Air Date:</span>
-                    {{ episode.air_date }}
+                    <div class="info-item">
+                        <span class="label">Air Date:</span>
+                        {{ episode.air_date }}
+                    </div>
                 </div>
+                <div class="characters-section">
+                    <h3 class="characters-title">CHARACTERS IN THIS EPISODE:</h3>
+                    <div class="characters-list">
+                        <ul>
+                            @for (character of characters; track character.id) {
+                                <li>
+                                    <a [routerLink]="['/characters', character.id]" class="character-link">
+                                    &gt; {{ character.name }}
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
             </div>
-            <div class="characters-section">
-                <h3 class="characters-title">CHARACTERS IN THIS EPISODE:</h3>
-                <div class="characters-list">
-                    <ul>
-                        @for (character of characters; track character.id) {
-                            <li>
-                                <a [routerLink]="['/characters', character.id]" class="character-link">
-                                &gt; {{ character.name }}
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
         </div>
-    </div>
+    }
     
     <div class="back-button-container">
         <button class="back-button" routerLink="/episodes">

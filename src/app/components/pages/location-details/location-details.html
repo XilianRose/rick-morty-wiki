@@ -1,34 +1,36 @@
 <div class="location-details-page">
     <div class="details-card">
-        <div class="info-section">
-            <h2 class="location-title">{{ location.name }}</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="label">Type:</span>
-                    {{ location.type }}
-                </div>
+		@if (location) {
+			<div class="info-section">
+				<h2 class="location-title">{{ location.name }}</h2>
+				<div class="info-grid">
+					<div class="info-item">
+						<span class="label">Type:</span>
+						{{ location.type }}
+					</div>
 
-                <div class="info-item">
-                    <span class="label">Dimension:</span>
-                    {{ location.dimension }}
-                </div>
-            </div>
-            <div class="characters-section">
-                <h3 class="characters-title">CHARACTERS IN THIS LOCATION:</h3>
-                <div class="characters-list">
-                    <ul>
-                        @for (character of residents; track character.id) {
-                            <li>
-                                <a [routerLink]="['/characters', character.id]" class="character-link">
-                                &gt; {{ character.name }}
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-        </div>
-    </div>
-    
+					<div class="info-item">
+						<span class="label">Dimension:</span>
+						{{ location.dimension }}
+					</div>
+				</div>
+				<div class="characters-section">
+					<h3 class="characters-title">CHARACTERS IN THIS LOCATION:</h3>
+					<div class="characters-list">
+						<ul>
+							@for (character of residents; track character.id) {
+								<li>
+									<a [routerLink]="['/characters', character.id]" class="character-link">
+									&gt; {{ character.name }}
+									</a>
+								</li>
+							}
+						</ul>
+					</div>
+			</div>
+		</div>
+	}
+
     <div class="back-button-container">
         <button class="back-button" routerLink="/locations">
             &lt; BACK TO LOCATIONS

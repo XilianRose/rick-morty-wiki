@@ -1,58 +1,60 @@
 <div class="character-details-page">
-  <div class="details-card">
-    <div class="details-grid">
+  @if (character) {
+    <div class="details-card">
+      <div class="details-grid">
 
-      <div class="image-section">
-        <img [src]="character.image" [alt]="character.name" class="character-image pixelated"/>
-      </div>
+        <div class="image-section">
+          <img [src]="character.image" [alt]="character.name" class="character-image pixelated"/>
+        </div>
 
-      <div class="info-section">
-        <h2 class="character-title">{{ character.name }}</h2>
-    
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="label">Species:</span>
-            {{ character.species }}
-          </div>
+        <div class="info-section">
+          <h2 class="character-title">{{ character.name }}</h2>
+      
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="label">Species:</span>
+              {{ character.species }}
+            </div>
 
-          <div class="info-item">
-            <span class="label">Status:</span>
-            {{ character.status }}
-          </div>
+            <div class="info-item">
+              <span class="label">Status:</span>
+              {{ character.status }}
+            </div>
 
-          <div class="info-item">
-            <span class="label">Gender:</span>
-            {{ character.gender }}
-          </div>
+            <div class="info-item">
+              <span class="label">Gender:</span>
+              {{ character.gender }}
+            </div>
 
-          <div class="info-item">
-            <span class="label">Origin:</span>
-            {{ character.origin.name }}
-          </div>
+            <div class="info-item">
+              <span class="label">Origin:</span>
+              {{ character.origin.name }}
+            </div>
 
-          <div class="info-item">
-            <span class="label">Location:</span>
-            {{ character.location.name }}
+            <div class="info-item">
+              <span class="label">Location:</span>
+              {{ character.location.name }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="episodes-section">
-      <h3 class="episodes-title">EPISODES APPEARED IN:</h3>
-      <div class="episodes-list">
-        <ul>
-          @for (episode of episodes; track episode.id) {
-            <li>
-              <a routerLink="/episodes/{{ episode.id }}" class="episode-link"> &gt; Episode {{ episode.episode }}
-              </a>
-            </li>
-          }
-        </ul>
+      <div class="episodes-section">
+        <h3 class="episodes-title">EPISODES APPEARED IN:</h3>
+        <div class="episodes-list">
+          <ul>
+            @for (episode of episodes; track episode.id) {
+              <li>
+                <a routerLink="/episodes/{{ episode.id }}" class="episode-link"> &gt; Episode {{ episode.episode }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-
+  }
+  
   <div class="back-button-container">
     <button class="back-button" routerLink="/characters">
       &lt; BACK TO CHARACTERS
