@@ -6,6 +6,7 @@ import { Episodes } from './components/pages/episodes/episodes';
 import { Locations } from './components/pages/locations/locations';
 import { CharacterDetails } from './components/pages/character-details/character-details';
 import { EpisodeDetails } from './components/pages/episode-details/episode-details';
+import { LocationDetails } from './components/pages/location-details/location-details';
 
 export const routes: Routes = [
     {
@@ -37,4 +38,8 @@ export const routes: Routes = [
         path: 'locations',
         component: Locations
     },
+    {
+        path: 'locations/:id',
+        component: LocationDetails
+    }
 ];
