@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CharactersService } from '../../../services/characters.service';
-import { Character } from '../../../models/characters.model';
+import { Character, CharacterFilter } from '../../../models/characters.model';
 import { CharacterCard } from '../../character-card/character-card';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -21,8 +21,21 @@ export class Characters implements OnInit {
   characters = signal<Character[]>([]);
   loading = signal<boolean>(false);
 
+  private filters = signal<CharacterFilter>({});
+
   ngOnInit() {
     this.loadCharacters(1);
+  }
+
+  onFilterChange (filters: { name?: string; status?: string; species?: string; gender?: string }) {
+    const currentFilters = this.filters();
+    this.filters.set({ ...currentFilters, ...filters });
+    this.charactersService.filterCharacters(this.filters()).subscribe( response => {
+      this.characters.set(response.results);
+      this.totalPages.set(response.info.pages);
+      this.totalCharacters.set(response.info.count);
+      this.currentPage.set(1);
+    });
   }
 
   loadCharacters(page: number) {

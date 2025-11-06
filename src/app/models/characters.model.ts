@@ -1,3 +1,10 @@
+export interface CharacterFilter {
+  name?: string;
+  status?: string;
+  species?: string;
+  gender?: string;
+}
+
 export interface CharacterLocation {
   name: string;
   url: string;
