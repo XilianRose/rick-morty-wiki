@@ -1,13 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CharactersService } from '../../../services/characters.service';
 import { Character, CharacterFilter } from '../../../models/characters.model';
+import { CharacterFilters } from '../../character-filters/character-filters';
 import { CharacterCard } from '../../character-card/character-card';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-characters',
-  imports: [CharacterCard, CommonModule, RouterModule],
+  imports: [CharacterCard, CharacterFilters, CommonModule, RouterModule],
   templateUrl: './characters.html',
   styleUrl: './characters.scss'
 })
@@ -27,7 +28,7 @@ export class Characters implements OnInit {
     this.loadCharacters(1);
   }
 
-  onFilterChange (filters: { name?: string; status?: string; species?: string; gender?: string }) {
+  updateFilters (filters: { name?: string; status?: string; species?: string; gender?: string }) {
     const currentFilters = this.filters();
     this.filters.set({ ...currentFilters, ...filters });
     this.charactersService.filterCharacters(this.filters()).subscribe( response => {

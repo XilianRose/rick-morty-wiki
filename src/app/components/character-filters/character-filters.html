@@ -1,0 +1,40 @@
+<input 
+	type="text" 
+	class="search-input" 
+	placeholder="Search characters..." 
+	(input)="onFilterChange({ name: $any($event.target).value })"
+/>
+<div class="dropdown">
+	<label for="status-filter">Filter by Status:</label>
+	<select id="status-filter" (change)="onFilterChange({ status: $any($event.target).value })">
+	<option value="">All</option>
+	<option value="alive">Alive</option>
+	<option value="dead">Dead</option>
+	<option value="unknown">Unknown</option>
+	</select>
+</div>
+<div class="dropdown">
+	<label for="species-filter">Filter by Species:</label>
+	<select id="species-filter" (change)="onFilterChange({ species: $any($event.target).value })">
+	<option value="">All</option>
+	<option value="alien">Alien</option>
+	<option value="animal">Animal</option>
+	<option value="cronenberg">Cronenberg</option>
+	<option value="human">Human</option>
+	<option value="humanoid">Humanoid</option>
+	<option value="mythological">Mythological</option>
+	<option value="poopybutthole">Poopybutthole</option>
+	<option value="robot">Robot</option>
+	<option value="unknown">Unknown</option>
+	</select>
+</div>
+<div class="dropdown">
+	<label for="gender-filter">Filter by Gender:</label>
+	<select id="gender-filter" (change)="onFilterChange({ gender: $any($event.target).value })">
+	<option value="">All</option>
+	<option value="female">Female</option>
+	<option value="male">Male</option>
+	<option value="genderless">Genderless</option>
+	<option value="unknown">Unknown</option>
+	</select>
+</div>
