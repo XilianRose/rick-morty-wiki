@@ -1,1 +1,36 @@
-<p>locations works!</p>
+<div class="locations-page">
+  <div class="page-header">
+    <h2>Locations</h2>
+    <p class="total-count">Total: {{ totalLocations() }} locations</p>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Loading locations...</div>
+  }
+
+  <div class="locations-grid">
+    @for (location of locations(); track location.id) {
+      <app-location-card [location]="location" [routerLink]="['/locations', location.id]"></app-location-card>
+    }
+  </div>
+
+  <div class="pagination">
+    <button 
+      class="pagination-btn" 
+      (click)="previousPage()" 
+      [disabled]="currentPage() === 1">
+      Previous
+    </button>
+    
+    <div class="page-info">
+      <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
+    </div>
+    
+    <button 
+      class="pagination-btn" 
+      (click)="nextPage()" 
+      [disabled]="currentPage() === totalPages()">
+      Next
+    </button>
+  </div>
+</div>
