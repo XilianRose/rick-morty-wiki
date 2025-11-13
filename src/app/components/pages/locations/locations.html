@@ -1,7 +1,8 @@
 <div class="locations-page">
   <div class="page-header">
     <h2>Locations</h2>
-    <p class="total-count">Total: {{ totalLocations() }} locations</p>
+    <app-location-filters (filtersChanged)="updateFilters($event)"></app-location-filters>
+    <p class="total-count">{{ totalLocations() }} locations found</p>
   </div>
 
   @if (loading()) {
